@@ -2,9 +2,9 @@ module.exports = {
   string: '1f521', //🔡
   integer: '1f522', //🔢
   decimal: '2139', //ℹ️
-  ifCommand: '1f914', //🤔
-  elseCommand: '1f627', //😧
-  inputCommand: '27a1', //➡️
-  printCommand: '1f5a8', //🖨
-  whileCommand: '1f504', //🔄
+  if: '1f914', //🤔
+  else: '1f627', //😧
+  input: '27a1', //➡️
+  output: '1f5a8', //🖨
+  while: '1f504', //🔄
 }
