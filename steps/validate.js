@@ -5,8 +5,8 @@ const emojiUnicode = require('../utils/emojiUnicode')
 // validators
 
 // variables
-const textValidator = require('../validators/string')
-const numberValidator = require('../validators/number')
+const stringValidator = require('../validators/string')
+const integerValidator = require('../validators/integer')
 const decimalValidator = require('../validators/variables/decimal')
 
 // conditions
@@ -29,11 +29,11 @@ module.exports = function(file) {
         ifElseValidator(line)
         break
 
-      case languageTokens.textVar:
-        textValidator(line)
+      case languageTokens.stringVar:
+        stringValidator(line)
         break
-      case languageTokens.numberVar:
-        numberValidator(line)
+      case languageTokens.integerVar:
+        integerValidator(line)
         break
       case languageTokens.decimalVar:
         decimalValidator(line)
