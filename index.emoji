@@ -12,6 +12,8 @@
 
 ➡️ entrada
 
+🔡 text = ➡️ "digite aqui seu texto"
+
 🖨 entrada
 
 🖨 text // erro pois o texto não existe

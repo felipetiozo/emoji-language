@@ -1,7 +1,11 @@
 function parser(line){
+  console.log(line)
   const lineLanguageToken = emojiUnicode(line[0] + line[1])
 
   switch (lineLanguageToken) {
+    case languageTokens.while:
+      return whileParser(line)
+      break
     case languageTokens.output:
       return outputParser(line)
       break
@@ -41,6 +45,9 @@ const ifElseParser = require('../parser/conditions/ifElse')
 // operations
 const outputParser = require('../parser/operations/output')
 const inputParser = require('../parser/operations/input')
+
+// loops
+const whileParser = require('../parser/loops/while')
 
 // general
 const cleanUp = require('../parser/general/cleanUp')
