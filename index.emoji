@@ -10,8 +10,6 @@
 
 🔢 number = "123" // erro pois o number é inteiro
 
-➡️ entrada
-
 🔡 text = ➡️ "digite aqui seu texto"
 
 🖨 entrada

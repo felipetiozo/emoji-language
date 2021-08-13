@@ -55,7 +55,7 @@ module.exports = function(file) {
   const linesWithSemiCollon = file.split('\n')
 
   const lines = linesWithSemiCollon.filter(line => line && line != "")
-  
+
   let parsedLines = []
   lines.forEach(line => parsedLines.push(parser(line)))
 
