@@ -1,5 +1,4 @@
 function parser(line){
-  console.log(line)
   const lineLanguageToken = emojiUnicode(line[0] + line[1])
 
   switch (lineLanguageToken) {
