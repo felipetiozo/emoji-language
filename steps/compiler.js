@@ -2,8 +2,8 @@ const throwAndExit = require('../utils/throwAndExit')
 const languageTokens = require('../utils/languageTokens')
 
 // validators
-const textVarValidator = require('../validators/textVarValidator')
-const numberVarValidator = require('../validators/numberVarValidator')
+const stringValidator = require('../validators/string')
+const numberValidator = require('../validators/number')
 
 module.exports = function(file) {
   const linesWithSemiCollon = file.split('\n')
@@ -26,7 +26,7 @@ module.exports = function(file) {
         alreadyConvertedLine.push(novasLinhas)
         break
       case languageTokens.numberVar:
-        numberVarValidator(line)
+        numberValidator(line)
         break
       default:
         throwAndExit(`Line was not recognized: "${line}"`)

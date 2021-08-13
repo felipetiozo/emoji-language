@@ -1,8 +1,8 @@
 🔡 text = "hello world"
 🔢 number = 1
-#️⃣ decimal = 0.2
+ℹ️ decimal = 0.2
 
-🤔 text == "hello world" { 
+🤔 text == "hello world" {
   🖨 "olá mundo" 
 }
 
