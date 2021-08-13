@@ -1,3 +1,3 @@
 module.exports = function(line) {
-  return `print(${line.replace("🖨", "").trim()})`
+  return `${line.replace("🖨", "").trim()}`
 }
