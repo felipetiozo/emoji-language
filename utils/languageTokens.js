@@ -1,7 +1,7 @@
 module.exports = {
-  textVar: '1f521', //🔡
-  intVar: '1f522', //🔢
-  decVar: '2139', //ℹ️
+  string: '1f521', //🔡
+  integer: '1f522', //🔢
+  decimal: '2139', //ℹ️
   ifCommand: '1f914', //🤔
   elseCommand: '1f627', //😧
   inputCommand: '27a1', //➡️

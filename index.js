@@ -2,7 +2,6 @@ const fs = require('fs')
 
 const throwAndExit = require('./utils/throwAndExit')
 const validateStep = require('./steps/validate')
-const emojiUnicode = require('./helpers/emojiUnicode')
 
 const args = require('minimist')(process.argv.slice(2));
 

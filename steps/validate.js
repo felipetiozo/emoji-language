@@ -5,18 +5,18 @@ const emojiUnicode = require('../utils/emojiUnicode')
 // validators
 
 // variables
-const stringValidator = require('../validators/string')
-const integerValidator = require('../validators/integer')
+const stringValidator = require('../validators/variables/string')
+const integerValidator = require('../validators/variables/integer')
 const decimalValidator = require('../validators/variables/decimal')
 
 // conditions
-const ifElseValidator = require('../validators/variables/ifElse')
-const ifCondition = require('../validators/variables/if')
+const ifElseValidator = require('../validators/conditions/ifElse')
+const ifCondition = require('../validators/conditions/if')
 
 module.exports = function(file) {
   const linesWithSemiCollon = file.split('\n')
 
-  const lines = linesWithSemiCollon.filter(line => line && line != "").map(line => line.slice(0, -1))
+  const lines = linesWithSemiCollon.filter(line => line && line != "")
 
   lines.forEach((line) => {
     const lineLanguageToken = emojiUnicode(line[0] + line[1])
@@ -29,13 +29,13 @@ module.exports = function(file) {
         ifElseValidator(line)
         break
 
-      case languageTokens.stringVar:
+      case languageTokens.string:
         stringValidator(line)
         break
-      case languageTokens.integerVar:
+      case languageTokens.integer:
         integerValidator(line)
         break
-      case languageTokens.decimalVar:
+      case languageTokens.decimal:
         decimalValidator(line)
           break
       default:
