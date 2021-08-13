@@ -5,10 +5,10 @@ module.exports = function getTypeOf(word, scope) {
   if (word.startsWith('string')) {
     return 'string'
   }
-  if (word.includes('.')) {
-    return 'decimal'
-  }
   if (!isNaN(Number(word))) {
+    if (word.includes('.')) {
+      return 'decimal'
+    }
     return 'integer'
   }
 

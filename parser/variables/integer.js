@@ -1,3 +1,5 @@
+const getTypeOf = require("../general/getTypeOf")
+
 module.exports = function(line, scope) {
   // expects 'dec_integer <id> = <number>'
   const words = line.split(' ')
@@ -8,6 +10,10 @@ module.exports = function(line, scope) {
   }
   if (scope.inside) {
     throw new Error('cannot define a variable inside brackets')
+  }
+
+  if ('integer' !== getTypeOf(words[2], scope)) {
+    throw new Error('type ' + getTypeOf(words[2], scope) + ' is not assignable to integer')
   }
 
   scope.global[words[0]] = {

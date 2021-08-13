@@ -1,3 +1,6 @@
+const getValue = require("../helpers/getValue")
+const getTypeOf = require("./getTypeOf")
+
 module.exports = function(line, scope) {
   const varId = line.split(' = ')[0]
   const arguments = line.split(' = ')[1]
@@ -40,6 +43,12 @@ function integerAttribution(arguments, scope) {
   } else if (words.length === 3) {
     const validOperators = ['+', '-', '/', '*']
     if (!validOperators.includes(words[1])) throw new Error('invalid operation: ' + words.join(' '))
+    if (getTypeOf(words[0], scope) === 'string') {
+      throw new Error(getValue(words[0], scope) + ' is not a number')
+    }
+    if (getTypeOf(words[2], scope) === 'string') {
+      throw new Error(getValue(words[2], scope) + ' is not a number')
+    }
     return `round(${words.join(' ')})`
   } else {
     throw new Error('invalid arguments: ' + words.join(' '))
@@ -83,6 +92,13 @@ function decimalAttribution(arguments, scope) {
   } else if (words.length === 3) {
     const validOperators = ['+', '-', '/', '*']
     if (!validOperators.includes(words[1])) throw new Error('invalid operation: ' + words.join(' '))
+    if (getTypeOf(words[0], scope) === 'string') {
+      throw new Error(getValue(words[0], scope) + ' is not a number')
+    }
+    if (getTypeOf(words[2], scope) === 'string') {
+      throw new Error(getValue(words[2], scope) + ' is not a number')
+    }
+
     return words.join(' ')
   } else {
     throw new Error('invalid arguments '+ words.join(' '))
