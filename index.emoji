@@ -2,19 +2,11 @@
 🔢 number = 1
 ℹ️ decimal = 0.2
 
-🤔 text == "hello world" {
-  🖨 "olá mundo" 
-}
+🤔 text == "hello world" { 🖨 "ola mundo" }
 
-🤔 number == 2 { 
-  🖨 "seu número é igual à 2" 
-} 😧 { 
-  🖨 "seu número não é igual à 2" 
-}
+🤔 number == 2 { 🖨 "seu numero é igual à 2" } 😧 { 🖨 "seu numero não é igual à 2" }
 
-🔄 number < 5 { 
-  number++; 
-}
+🔄 number < 5 { number++ }
 
 🔢 number = "123" // erro pois o number é inteiro
 
