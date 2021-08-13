@@ -10,7 +10,15 @@
 	Felipe Tiozo
 	Leandro de Souza Mattos 11049914
 
+## Limitações
+	- ao declarar uma variável, é necessário passar um valor válido
+	- não é possível usar condicionais dentro do while e de outras condicionais
+	- não é possível usar um while dentro de uma condicional
+	- o tipo integer e o tipo decimal suportam apenas 1 operação
+	- só é possível fazer um input com o tipo string
+	- só é possível imprimir strings, a não ser que o valor esteja dentro de uma variável
 ## Como Usar
+
 
 ## Obrigatoriedades
 

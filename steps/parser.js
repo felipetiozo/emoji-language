@@ -1,36 +1,45 @@
-function parser(line){
-  const lineLanguageToken = emojiUnicode(line[0] + line[1])
+function parser(line, scope){
+  try {
+    const words = line.value.split(' ')
+    const initialWord = words[0]
+    const tab = scope.inside? '\t' : ''
 
-  switch (lineLanguageToken) {
-    case languageTokens.while:
-      return whileParser(line)
-      break
-    case languageTokens.output:
-      return outputParser(line)
-      break
-    case languageTokens.input:
-      return inputParser(line)
-      break
-    case languageTokens.if:
-      return ifElseParser(line)
-      break
-    case languageTokens.string:
-      return stringParser(line)
-      break
-    case languageTokens.integer:
-      return integerParser(line)
-      break
-    case languageTokens.decimal:
-      return decimalParser(line)
-      break
-    default:
-      return cleanUp(line)
+    switch (initialWord) {
+      case 'while':
+        if (!scope.inside) scope.canUseElse = false
+        return tab + whileParser(line, scope)
+      case 'output':
+        if (!scope.inside) scope.canUseElse = false
+        return tab + outputParser(line.value, scope)
+      case 'input':
+        if (!scope.inside) scope.canUseElse = false
+        return tab + inputParser(line.value, scope) 
+      case 'if':
+        if (!scope.inside) scope.canUseElse = false
+        return tab + ifParser(line, scope)
+      case 'else':
+        return tab + elseParser(line, scope)
+      case 'dec_string':
+        if (!scope.inside) scope.canUseElse = false
+        return tab + stringParser(line.value, scope)
+      case 'dec_integer':
+        if (!scope.inside) scope.canUseElse = false
+        return tab + integerParser(line.value, scope)
+      case 'dec_decimal':
+        if (!scope.inside) scope.canUseElse = false
+        return tab + decimalParser(line.value, scope)
+      case 'end_bracket':
+        if (!scope.inside) scope.canUseElse = false
+        return tab + endBracket(line.value, scope)
+      default:
+        if (!scope.inside) scope.canUseElse = false
+        return defaultParser(line.value, scope)
+    }
+  } catch (error) {
+    throw new Error(error.message + ' at line: ' + (line.index + 1))
   }
 }
 module.exports.parser = parser
-
-const languageTokens = require('../utils/languageTokens')
-const emojiUnicode = require('../utils/emojiUnicode')
 
 // parsers
 // variables
@@ -39,7 +48,8 @@ const integerParser = require('../parser/variables/integer')
 const decimalParser = require('../parser/variables/decimal')
 
 // conditions
-const ifElseParser = require('../parser/conditions/ifElse')
+const ifParser = require('../parser/conditions/if')
+const elseParser = require('../parser/conditions/else')
 
 // operations
 const outputParser = require('../parser/operations/output')
@@ -49,16 +59,19 @@ const inputParser = require('../parser/operations/input')
 const whileParser = require('../parser/loops/while')
 
 // general
-const cleanUp = require('../parser/general/cleanUp')
+const defaultParser = require('../parser/general/default')
+const endBracket = require('../parser/general/endBracket')
 
-module.exports = function(file) {
-  const linesWithSemiCollon = file.split('\n')
-
-  const lines = linesWithSemiCollon.filter(line => line && line != "")
-
+module.exports = function(lines, scope) {
   let parsedLines = []
-  lines.forEach(line => parsedLines.push(parser(line)))
+  lines.forEach(line => parsedLines.push(parser(line, scope)))
 
-  console.log(parsedLines)
+  if (scope.inside) {
+    const words = scope.inside.split(':')
+    const method = words[0]
+    const line = words[1]
+    throw new Error(`the method ${method} at line ${line} was not closed`)
+  }
+
   return parsedLines
 }

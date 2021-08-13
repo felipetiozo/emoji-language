@@ -1,4 +1,4 @@
-module.exports = function(line) {
+module.exports = function(line, scope) {
   if(line == '}') {
     return ''
   }

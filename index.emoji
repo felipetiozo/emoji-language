@@ -1,19 +1,28 @@
 🔡 text = "hello world"
-🔢 number = 1
-ℹ️ decimal = 0.2
+🔢 number = 2
+🔣 decimal = 2.3
 
-🤔 text == "hello world" { 🖨 "ola mundo" }
+number = 1 + 2
 
-🤔 number == 2 { 🖨 "seu numero é igual à 2" } 😧 { 🖨 "seu numero não é igual à 2" }
+text = "asdasd"
 
-🔄 number < 5 { number++ }
+🤔 text == "hello world" {
+  🖨 "ola mundo"
+}
 
-🔢 number = "123" // erro pois o number é inteiro
+🤔 number == 2 {
+  🖨 "seu numero é igual à 2"
+}
+😧 {
+  🖨 "dasdas"
+}
 
-🔡 text = ➡️ "digite aqui seu texto"
+🔄 number < 5 {
+  number = number + 1
+}
+
+
+➡️ entrada
 
 🖨 entrada
 
-🖨 text // erro pois o texto não existe
-
-// erro pois o decimal não foi utilizado

@@ -1,7 +1,7 @@
 const throwAndExit = require('../../utils/throwAndExit')
 
 module.exports = function(line) {
-  const isValid = /🤡 [a-z]* = [1-9]*/g.test(line)
+  const isValid = /😧 {/.test(line)
 
   if (!isValid) {
     throwAndExit(`Invalid decimal var line: ${line}`)
