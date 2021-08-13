@@ -1,5 +1,6 @@
 const throwAndExit = require('../utils/throwAndExit')
 const languageTokens = require('../utils/languageTokens')
+const emojiUnicode = require('../utils/emojiUnicode')
 
 // validators
 

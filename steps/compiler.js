@@ -8,24 +8,19 @@ const numberValidator = require('../validators/number')
 module.exports = function(file) {
   const linesWithSemiCollon = file.split('\n')
 
-  const allLinesAreCorreclty = linesWithSemiCollon.filter(line => line && line != "").every(line => line[line.length - 1] == ";")
-  if (!allLinesAreCorreclty) {
-    throwAndExit('All lines must finish with ";"')
-  }
-
   const lines = linesWithSemiCollon.filter(line => line && line != "").map(line => line.slice(0, -1))
 
   lines.forEach(line => {
-    const lineLanguageToken = line.charCodeAt(0)
+    const lineLanguageToken = emojiUnicode(line[0] + line[1])
 
     const novasLinhas = []
 
     switch (lineLanguageToken) {
-      case languageTokens.textVar:
+      case languageTokens.string:
         const alreadyConvertedLine = textVarCompiler(line)
         alreadyConvertedLine.push(novasLinhas)
         break
-      case languageTokens.numberVar:
+      case languageTokens.number:
         numberValidator(line)
         break
       default:
