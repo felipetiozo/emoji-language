@@ -1,9 +1,8 @@
-const throwAndExit = require('../utils/throwAndExit')
 const languageTokens = require('../utils/languageTokens')
 
 // validators
-const stringValidator = require('../validators/string')
-const numberValidator = require('../validators/number')
+const stringParser = require('../parser/variables/string')
+const integerParser = require('../parser/variables/integer')
 
 module.exports = function(file) {
   const linesWithSemiCollon = file.split('\n')
@@ -11,20 +10,17 @@ module.exports = function(file) {
   const lines = linesWithSemiCollon.filter(line => line && line != "").map(line => line.slice(0, -1))
 
   lines.forEach(line => {
-    const lineLanguageToken = emojiUnicode(line[0] + line[1])
-
-    const novasLinhas = []
+    const parsedLines = []
 
     switch (lineLanguageToken) {
       case languageTokens.string:
-        const alreadyConvertedLine = textVarCompiler(line)
-        alreadyConvertedLine.push(novasLinhas)
+        parsedLines.push(stringParser(line))
         break
       case languageTokens.number:
-        numberValidator(line)
+        parsedLines.push(integerParser(line))
         break
       default:
-        throwAndExit(`Line was not recognized: "${line}"`)
+        parsedLines.push("")
     }
   })
 

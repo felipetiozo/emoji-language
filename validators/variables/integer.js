@@ -4,6 +4,6 @@ module.exports = function(line) {
   const isValid = /🤡 [a-z]* = [1-9]*/g.test(line)
 
   if (!isValid) {
-    throwAndExit(`Invalid number var line: ${line}`)
+    throwAndExit(`Invalid integer var line: ${line}`)
   }
 }
