@@ -1,0 +1,27 @@
+🔡 text = "hello world"
+🔢 number = 1
+#️⃣ decimal = 0.2
+
+🤔 text == "hello world" { 
+  🖨 "olá mundo" 
+}
+
+🤔 number == 2 { 
+  🖨 "seu número é igual à 2" 
+} 😧 { 
+  🖨 "seu número não é igual à 2" 
+}
+
+🔄 number < 5 { 
+  number++; 
+}
+
+🔢 number = "123" // erro pois o number é inteiro
+
+➡️ entrada
+
+🖨 entrada
+
+🖨 text // erro pois o texto não existe
+
+// erro pois o decimal não foi utilizado

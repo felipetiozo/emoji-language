@@ -1,0 +1,3 @@
+🔢 number = 1
+
+🔢 number = "123" // erro pois o number é inteiro
