@@ -47,9 +47,8 @@ node index.js -f <nome do arquivo>.emoji
 🔢 number2 = number
 🔣 decimal = 2.3
 
-number = 52
-
-text = "asdasd"
+🆕 number = 52
+🆕 text = "asdasd"
 
 🤔 text == "hello world" {
   🖨 "ola mundo"
