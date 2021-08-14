@@ -34,13 +34,13 @@
 
 ### Variáveis
 
-:writing_hand: = declaração de variavel
-
 :ear: = operador de atribuição 
 
 :capital_abcd: = texto
 
 :1234:  = número
+
+:🔣:  = decimal 
 
 :balance_scale:  = boolean 
 
@@ -74,7 +74,7 @@
 
 ### Entrada e saída de dados
 
-:book: = leitura
+:➡: = leitura
 
 :printer: = impressão na tela
 
