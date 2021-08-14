@@ -74,7 +74,7 @@
 
 ### Entrada e saída de dados
 
-:➡: = leitura
+➡ = leitura
 
 :printer: = impressão na tela
 
