@@ -33,7 +33,7 @@ function parser(line, scope){
         return tab + endBracket(line.value, scope)
       default:
         if (!scope.inside) scope.canUseElse = false
-        return defaultParser(line.value, scope)
+        return tab + defaultParser(line.value, scope)
     }
   } catch (error) {
     throw new Error(error.message + ' at line: ' + (line.index + 1))

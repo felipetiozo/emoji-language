@@ -1,3 +1,5 @@
+const getTypeOf = require('../general/getTypeOf')
+
 module.exports = function(line, scope) {
   // expects 'dec_string <id> = string_value:<stringId>'
   const words = line.split(' ')
@@ -8,6 +10,9 @@ module.exports = function(line, scope) {
   }
   if (scope.inside) {
     throw new Error('cannot define a variable inside brackets')
+  }
+  if ('string' !== getTypeOf(words[2], scope)) {
+    throw new Error('type ' + getTypeOf(words[2], scope) + ' is not assignable to string')
   }
   
   words[2] = getValueOfString(words[2], scope)

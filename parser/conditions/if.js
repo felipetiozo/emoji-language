@@ -1,4 +1,5 @@
 const validateComparison = require('../general/validateComparison')
+const getValue = require('../helpers/getValue')
 
 module.exports = function(line, scope) {
   const words = line.value.split(' ')
@@ -18,17 +19,4 @@ module.exports = function(line, scope) {
   const condition = `${words[0]} ${words[1]} ${words[2]}`
 
   return `if ${condition}:`
-}
-
-function getValue(word, scope) {
-  if (word.startsWith('string')) {
-    return '"' + scope.strings[word.split(':')[1]] + '"'
-  } else if (isNaN(Number(word))) {
-    if (scope.global[word]) {
-      return word
-    } else {
-      throw new Error(word + ' is not declared')
-    }
-  }
-  return word
 }
