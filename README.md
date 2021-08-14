@@ -1,4 +1,5 @@
-# 🇧🇷🥰🤪😎🤔👍👏 Emoji Language - Projeto de Compiladores
+# 🥰🤪😎🤔👍👏🎁🥳2️⃣0️⃣2️⃣1️⃣🙏☠️🗣
+# Emoji Language - Projeto de Compiladores
 
 ### Prof. Isidro, 2021.Q2
 
