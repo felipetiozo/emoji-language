@@ -6,10 +6,11 @@
 ## Integrantes
 
 	André Yuji Sakuma - 11201920463
-	Gabriela Ayumi Ueda - 11201811619
 	Felipe Oliveira Silva - 11201822479
 	Felipe de Souza Tiozo - 11201822483
+	Gabriela Ayumi Ueda - 11201811619
 	Leandro de Souza Mattos - 11049914
+	Vitor Bobig Diricio - 11201811376
 	
 	
 ## Como Usar
