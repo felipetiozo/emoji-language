@@ -3,6 +3,10 @@
 
 ### Prof. Isidro, 2021.Q2
 
+Nós criamos uma linguagem de programação usando EMOJIS! 😂🤓😜
+
+Escreva um código em .emoji e compile ele para Python.
+
 ## Integrantes
 
 	André Yuji Sakuma - 11201920463
