@@ -1,14 +1,15 @@
 const fs = require('fs')
+const args = require('minimist')(process.argv.slice(2));
 
+// utils
 const logStep = require('./utils/logStep')
 const throwAndExit = require('./utils/throwAndExit')
-const parserStep = require('./steps/parser')
 const setTokens = require('./utils/setTokens')
-// const decimal = require('./parser/variables/decimal')
+
+// steps
+const parserStep = require('./steps/parser')
 const validate = require('./steps/validate')
 const generateFile = require('./steps/generator')
-
-const args = require('minimist')(process.argv.slice(2));
 
 const fileArg = args.f
 if (!fileArg) {
@@ -24,7 +25,7 @@ try {
   throwAndExit(`File ${fileArg} dont exist`)
 }
 
-const fileName = fileArg.split('.')[0]
+const fileName = fileArg.split('.')[0] || 'out'
 
 logStep('ReadingLines', false)
 logStep('ReadingLines', true)
@@ -47,12 +48,17 @@ try {
   validate(file)
   logStep('ValidatingFile', true)
 
-  console.log(lines)
   const tokenizedLines = lines.map(line => setTokens(line, scope))
-  console.log(tokenizedLines)
 
+  logStep('ParsingLines', false)
   parsedLines = parserStep(tokenizedLines, scope)
+  logStep('ParsingLines', true)
 } catch(err) {
   throwAndExit(err.message)
 }
+
+logStep('GeneratingOutput', false)
 generateFile(parsedLines, fileName)
+logStep('GeneratingOutput', true)
+
+console.log(`File ${fileName}.py was generated at ./out`)

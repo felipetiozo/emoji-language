@@ -3,7 +3,6 @@
 🔢 number2 = number
 🔣 decimal = 2.3
 
-number = 1 + "number3"
 number = 52
 
 text = "asdasd"
