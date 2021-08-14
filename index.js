@@ -1,7 +1,7 @@
 const fs = require('fs')
 
+const logStep = require('./utils/logStep')
 const throwAndExit = require('./utils/throwAndExit')
-const validateStep = require('./steps/validate')
 const parserStep = require('./steps/parser')
 const setTokens = require('./utils/setTokens')
 // const decimal = require('./parser/variables/decimal')
@@ -17,13 +17,17 @@ if (!fileArg) {
 
 let file
 try {
+  logStep('ReadingFile', false)
   file = fs.readFileSync(fileArg, 'utf8');
+  logStep('ReadingFile', true)
 } catch(e) {
   throwAndExit(`File ${fileArg} dont exist`)
 }
 
 const fileName = fileArg.split('.')[0]
 
+logStep('ReadingLines', false)
+logStep('ReadingLines', true)
 const lines = file.split('\n').map((line, index) => {
   return {
     value: line,
@@ -39,7 +43,9 @@ const scope = {
 
 let parsedLines
 try {
-  // validate(file)
+  logStep('ValidatingFile', false)
+  validate(file)
+  logStep('ValidatingFile', true)
 
   console.log(lines)
   const tokenizedLines = lines.map(line => setTokens(line, scope))
@@ -50,4 +56,3 @@ try {
   throwAndExit(err.message)
 }
 generateFile(parsedLines, fileName)
-
